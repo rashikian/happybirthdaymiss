@@ -1,0 +1,6 @@
+{
+  "name": "Happy Solar Lap!",
+  "description": "A sunlit Darjeeling & Old Kolkata inspired interactive birthday station celebrating another trip around the Sun.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

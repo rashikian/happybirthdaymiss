@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+:root {
+  --sky-blue: rgb(90, 215, 252);
+  --warm-white: rgb(253, 252, 250);
+  --deep-burgundy: rgb(151, 40, 46);
+  --ink-dark: #1d252b;
+  --ink-muted: #42535e;
+  --pine-deep: #1b4332;
+  --hairline: rgba(29, 37, 43, 0.16);
+}
+
+@layer base {
+  html {
+    background-color: var(--sky-blue);
+    color: var(--ink-dark);
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(151, 40, 46) rgb(90, 215, 252);
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: var(--sky-blue);
+    color: var(--ink-dark);
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 11px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgb(90, 215, 252);
+    border-left: 1px solid rgba(29, 37, 43, 0.14);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(151, 40, 46);
+    border-radius: 9999px;
+    border: 2px solid rgb(253, 252, 250);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #7d2025;
+  }
+
+  h1,
+  h2,
+  h3,
+  .font-display {
+    font-family: "Fraunces", Georgia, serif;
+  }
+
+  .font-mono-tabular {
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+/* Dominant Sky Blue (60%) sunlit vintage sky canvas with soft warm-white sunlight & grain */
+.sunlit-canvas {
+  background-color: rgb(90, 215, 252);
+  background-image:
+    radial-gradient(circle at 18% 10%, rgba(253, 252, 250, 0.34) 0%, rgba(253, 252, 250, 0) 44%),
+    radial-gradient(circle at 86% 26%, rgba(253, 252, 250, 0.22) 0%, rgba(253, 252, 250, 0) 48%),
+    radial-gradient(circle at 50% 92%, rgba(151, 40, 46, 0.08) 0%, rgba(151, 40, 46, 0) 48%),
+    linear-gradient(180deg, rgb(118, 223, 253) 0%, rgb(90, 215, 252) 48%, rgb(74, 200, 238) 100%);
+}
+
+.film-grain-layer {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+
+.postcard-rule {
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 31px,
+    rgba(29, 37, 43, 0.08) 31px,
+    rgba(29, 37, 43, 0.08) 32px
+  );
+}
+
+.sprocket-strip {
+  background-image: radial-gradient(circle, var(--warm-white) 3.2px, transparent 3.6px);
+  background-size: 18px 18px;
+  background-position: center;
+}
+
+@keyframes gentle-puff {
+  0% {
+    opacity: 0.85;
+    transform: translateY(0) scale(0.8);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-22px) scale(1.45);
+  }
+}
+
+.animate-puff {
+  animation: gentle-puff 1.6s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-puff {
+    animation: none;
+    opacity: 0.45;
+  }
+}
+
+/* Scoped personal notebook rich-text formatting & interactive checklist styling */
+.note-editor-prose:empty::before {
+  content: attr(data-placeholder);
+  color: rgba(66, 83, 94, 0.55);
+  pointer-events: none;
+}
+
+.note-editor-prose h2,
+.note-editor-prose h3 {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #1d252b;
+  margin-top: 0.9rem;
+  margin-bottom: 0.45rem;
+}
+
+.note-editor-prose p,
+.note-editor-prose > div:not(.note-checklist-item) {
+  margin-bottom: 0.55rem;
+}
+
+.note-editor-prose ul {
+  list-style-type: disc;
+  padding-left: 1.45rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.note-editor-prose ol {
+  list-style-type: decimal;
+  padding-left: 1.45rem;
+  margin: 0.5rem 0 0.75rem;
+}
+
+.note-editor-prose li {
+  margin-bottom: 0.28rem;
+}
+
+.note-editor-prose .note-checklist-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin: 0.4rem 0;
+}
+
+.note-editor-prose .note-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  flex-shrink: 0;
+  width: 1.125rem;
+  height: 1.125rem;
+  margin-top: 0.3rem;
+  border-radius: 0.28rem;
+  border: 1.5px solid rgba(29, 37, 43, 0.38);
+  background-color: rgb(253, 252, 250);
+  cursor: pointer;
+  position: relative;
+  transition: background-color 140ms ease, border-color 140ms ease;
+}
+
+.note-editor-prose .note-checkbox:checked {
+  background-color: rgb(151, 40, 46);
+  border-color: rgb(151, 40, 46);
+}
+
+.note-editor-prose .note-checkbox:checked::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 2px;
+  width: 5px;
+  height: 9px;
+  border: solid rgb(253, 252, 250);
+  border-width: 0 2px 2px 0;
+  transform: rotate(42deg);
+}
+
+.note-editor-prose .note-check-text {
+  flex: 1;
+  min-width: 0;
+  outline: none;
+}
+
+.note-editor-prose .note-checklist-item[data-checked="true"] .note-check-text {
+  text-decoration: line-through;
+  color: rgba(66, 83, 94, 0.72);
+}
